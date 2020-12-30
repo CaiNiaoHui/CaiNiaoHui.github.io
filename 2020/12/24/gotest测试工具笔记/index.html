@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<title>Hexo | Hexo</title>
+	<title>go测试章节 | Hexo</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -40,7 +40,7 @@
 
 	<meta property="og:site_name" content="Hexo">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="Hexo | Hexo">
+	<meta property="og:title" content="go测试章节 | Hexo">
 	<meta property="og:description" content="">
 	<meta property="og:url" content="http://example.com/2020/12/24/gotest%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E7%AC%94%E8%AE%B0/">
 
@@ -134,13 +134,13 @@
                 
                 
             </section>
-            <h1 class="post-full-title"></h1>
+            <h1 class="post-full-title">go测试章节</h1>
         </header>
         <article class="post-full no-image">
             
             <section class="post-full-content">
                 <div id="lightgallery" class="markdown-body">
-                    <h1 id="go测试章节"><a href="#go测试章节" class="headerlink" title="go测试章节"></a>go测试章节</h1><h2 id="gotest文本如何书写"><a href="#gotest文本如何书写" class="headerlink" title="gotest文本如何书写"></a>gotest文本如何书写</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//表格驱动测试</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestXXX</span><span class="params">(t * testint.T)</span></span>{</span><br><span class="line">  <span class="comment">// 定义输入输出</span></span><br><span class="line">  tests := []<span class="keyword">struct</span>{</span><br><span class="line">    in <span class="keyword">int</span></span><br><span class="line">    out <span class="keyword">int</span></span><br><span class="line">  }</span><br><span class="line">}{</span><br><span class="line">  <span class="comment">// 测试数据</span></span><br><span class="line">  {<span class="number">1</span>, <span class="number">1</span>}，</span><br><span class="line">  {<span class="number">2</span>, <span class="number">2</span>},</span><br><span class="line">  ...</span><br><span class="line">}</span><br><span class="line"><span class="keyword">for</span> _, tt := <span class="keyword">range</span> tests {</span><br><span class="line">  <span class="comment">//通过函数执行测试用例</span></span><br><span class="line">  actual := 需要测试的函数名(tt.in) </span><br><span class="line">  <span class="keyword">if</span> actual != tt.out {</span><br><span class="line">    <span class="comment">//输出不匹配的信息</span></span><br><span class="line">    <span class="comment">//errof输出</span></span><br><span class="line">    t.Errof(t.Errorf(<span class="string">"got %d for input %s; expected %d"</span>, actual, tt.in, tt.out))</span><br><span class="line">    <span class="comment">//Skipf输出</span></span><br><span class="line">    t.Skipf(t.Errorf(<span class="string">"got %d for input %s; expected %d"</span>, actual, tt.in, tt.out))</span><br><span class="line">    <span class="comment">//logf输出</span></span><br><span class="line">    t.Logf(t.Errorf(<span class="string">"got %d for input %s; expected %d"</span>, actual, tt.in, tt.out))</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+                    <h2 id="gotest文本如何书写"><a href="#gotest文本如何书写" class="headerlink" title="gotest文本如何书写"></a>gotest文本如何书写</h2><figure class="highlight go"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//表格驱动测试</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestXXX</span><span class="params">(t * testint.T)</span></span>{</span><br><span class="line">  <span class="comment">// 定义输入输出</span></span><br><span class="line">  tests := []<span class="keyword">struct</span>{</span><br><span class="line">    in <span class="keyword">int</span></span><br><span class="line">    out <span class="keyword">int</span></span><br><span class="line">  }</span><br><span class="line">}{</span><br><span class="line">  <span class="comment">// 测试数据</span></span><br><span class="line">  {<span class="number">1</span>, <span class="number">1</span>}，</span><br><span class="line">  {<span class="number">2</span>, <span class="number">2</span>},</span><br><span class="line">  ...</span><br><span class="line">}</span><br><span class="line"><span class="keyword">for</span> _, tt := <span class="keyword">range</span> tests {</span><br><span class="line">  <span class="comment">//通过函数执行测试用例</span></span><br><span class="line">  actual := 需要测试的函数名(tt.in) </span><br><span class="line">  <span class="keyword">if</span> actual != tt.out {</span><br><span class="line">    <span class="comment">//输出不匹配的信息</span></span><br><span class="line">    <span class="comment">//errof输出</span></span><br><span class="line">    t.Errof(t.Errorf(<span class="string">"got %d for input %s; expected %d"</span>, actual, tt.in, tt.out))</span><br><span class="line">    <span class="comment">//Skipf输出</span></span><br><span class="line">    t.Skipf(t.Errorf(<span class="string">"got %d for input %s; expected %d"</span>, actual, tt.in, tt.out))</span><br><span class="line">    <span class="comment">//logf输出</span></span><br><span class="line">    t.Logf(t.Errorf(<span class="string">"got %d for input %s; expected %d"</span>, actual, tt.in, tt.out))</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>表格驱动测试语句（后面通过正则匹配）<ul>
 <li> go test -v -timeout 30s . -run ^TestXXX$</li>
@@ -191,14 +191,14 @@
     <div style="height: 4vw;width: 100%"></div>
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="" href="/2020/12/25/you-get%E7%AC%94%E8%AE%B0/">
-            ← 
+        <a class="prev-post" title="YOU-GET笔记" href="/2020/12/25/you-get%E7%AC%94%E8%AE%B0/">
+            ← YOU-GET笔记
         </a>
         
         <span class="prev-next-post">•</span>
         
-        <a class="next-post" title="" href="/2020/12/10/kubernetesAPI%E8%B0%83%E7%94%A8/">
-             →
+        <a class="next-post" title="初看组件 7大组件+1个运行时（master 5 + node 2）" href="/2020/12/18/kubernetes%E7%BB%84%E4%BB%B6%E8%AF%A6%E7%BB%86%E7%AC%94%E8%AE%B0/">
+            初看组件 7大组件+1个运行时（master 5 + node 2） →
         </a>
         
     </nav>
@@ -224,8 +224,8 @@
         </a>
     </div>
     <div class="toc-main">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#go%E6%B5%8B%E8%AF%95%E7%AB%A0%E8%8A%82"><span class="toc-text">go测试章节</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gotest%E6%96%87%E6%9C%AC%E5%A6%82%E4%BD%95%E4%B9%A6%E5%86%99"><span class="toc-text">gotest文本如何书写</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#go-test-%E5%92%8Cgo-tool-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">go test 和go tool 性能测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#go-pprof%E6%B5%8B%E8%AF%95"><span class="toc-text">go pprof测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#godoc-%E6%96%87%E6%A1%A3"><span class="toc-text">godoc 文档</span></a></li></ol>
-    </div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#gotest%E6%96%87%E6%9C%AC%E5%A6%82%E4%BD%95%E4%B9%A6%E5%86%99"><span class="toc-text">gotest文本如何书写</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#go-test-%E5%92%8Cgo-tool-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">go test 和go tool 性能测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#go-pprof%E6%B5%8B%E8%AF%95"><span class="toc-text">go pprof测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#godoc-%E6%96%87%E6%A1%A3"><span class="toc-text">godoc 文档</span></a>
+    </li></div>
 </div>
 
 
@@ -262,14 +262,16 @@
       
       
       <li>
-        <a href="/2020/12/30/markdown%E7%AC%94%E8%AE%B0/"></a>
+        <a href="/2020/12/30/markdown%E7%AC%94%E8%AE%B0/">markdown笔记</a>
       </li>
       
       
       
       <li>
-        <a href="/2020/12/29/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"></a>
+        <a href="/2020/12/29/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">基础命令日常总结</a>
       </li>
+      
+      
       
       
       
@@ -360,7 +362,7 @@
         </a>
     </div>
     <span class="floating-header-divider">—</span>
-    <div class="floating-header-title"></div>
+    <div class="floating-header-title">go测试章节</div>
     <progress class="progress" value="0">
         <div class="progress-container">
             <span class="progress-bar"></span>

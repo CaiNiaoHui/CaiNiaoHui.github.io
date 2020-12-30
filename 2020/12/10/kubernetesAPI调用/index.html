@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<title>Hexo | Hexo</title>
+	<title>连接kubernetes | Hexo</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -40,7 +40,7 @@
 
 	<meta property="og:site_name" content="Hexo">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="Hexo | Hexo">
+	<meta property="og:title" content="连接kubernetes | Hexo">
 	<meta property="og:description" content="">
 	<meta property="og:url" content="http://example.com/2020/12/10/kubernetesAPI%E8%B0%83%E7%94%A8/">
 
@@ -134,21 +134,20 @@
                 
                 
             </section>
-            <h1 class="post-full-title"></h1>
+            <h1 class="post-full-title">连接kubernetes</h1>
         </header>
         <article class="post-full no-image">
             
             <section class="post-full-content">
                 <div id="lightgallery" class="markdown-body">
-                    <h1 id="连接kubernetes"><a href="#连接kubernetes" class="headerlink" title="连接kubernetes"></a>连接kubernetes</h1><h2 id="client-go"><a href="#client-go" class="headerlink" title="client-go"></a>client-go</h2><p> 通过client-go获取kubeconfig访问集群</p>
+                    <h2 id="client-go"><a href="#client-go" class="headerlink" title="client-go"></a>client-go</h2><p> 通过client-go获取kubeconfig访问集群</p>
 <p> 参考文献：<br> <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37950254/article/details/89603207">https://blog.csdn.net/qq_37950254/article/details/89603207</a></p>
 <p> <a target="_blank" rel="noopener" href="https://github.com/kubernetes/client-go/blob/master/examples/out-of-cluster-client-configuration/main.go">https://github.com/kubernetes/client-go/blob/master/examples/out-of-cluster-client-configuration/main.go</a></p>
 <p> <a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/tasks/administer-cluster/access-cluster-api/">https://kubernetes.io/zh/docs/tasks/administer-cluster/access-cluster-api/</a></p>
 <p> <a target="_blank" rel="noopener" href="https://my.oschina.net/u/4382516/blog/3303251">https://my.oschina.net/u/4382516/blog/3303251</a></p>
-<hr>
 <p>普通调用的方法：</p>
 <figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl create sa my-sa </span><br><span class="line">$ kubect1 create clusterrolebinding my-clusterrolebinding --clusterrole-cluster-admin --serviceaccount=default:my-sa </span><br><span class="line">$ <span class="built_in">export</span> TOKEN=<span class="string">'kubect1 get secret s(kubect1 get secret | grep my-sa | awk '</span>(<span class="built_in">print</span> <span class="variable">$l</span>}<span class="string">') -ojsonpath=(.data.token} I base64 -d</span></span><br></pre></td></tr></tbody></table></figure>
-<hr>
+
 <h2 id="k8s开启http端口"><a href="#k8s开启http端口" class="headerlink" title="k8s开启http端口"></a>k8s开启http端口</h2><ul>
 <li>访问apiserver的http8080端口需要开启，apiserver的pod的不安全服务端口<ul>
 <li>vim /etc/kubernetes/manifests/kube-apiserver.yaml </li>
@@ -247,8 +246,8 @@
     <div style="height: 4vw;width: 100%"></div>
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="" href="/2020/12/24/gotest%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E7%AC%94%E8%AE%B0/">
-            ← 
+        <a class="prev-post" title="初看组件 7大组件+1个运行时（master 5 + node 2）" href="/2020/12/18/kubernetes%E7%BB%84%E4%BB%B6%E8%AF%A6%E7%BB%86%E7%AC%94%E8%AE%B0/">
+            ← 初看组件 7大组件+1个运行时（master 5 + node 2）
         </a>
         
         <span class="prev-next-post">•</span>
@@ -276,7 +275,7 @@
         </a>
     </div>
     <div class="toc-main">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5kubernetes"><span class="toc-text">连接kubernetes</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#client-go"><span class="toc-text">client-go</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k8s%E5%BC%80%E5%90%AFhttp%E7%AB%AF%E5%8F%A3"><span class="toc-text">k8s开启http端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AApod%E6%9C%80%E8%B5%B7%E7%A0%81%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">定义一个pod最起码的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AAdeployment%E6%9C%80%E8%B5%B7%E7%A0%81%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">定义一个deployment最起码的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AAservice%E6%9C%80%E8%B5%B7%E7%A0%81%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">定义一个service最起码的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k8s%E8%B0%83%E5%BA%A6%E5%99%A8%EF%BC%8C%E9%A2%84%E9%80%89%E7%AD%96%E7%95%A5%E5%92%8C%E4%BC%98%E9%80%89%E5%87%BD%E6%95%B0%EF%BC%88https-www-cnblogs-com-klvchen-p-10024846-html%EF%BC%89"><span class="toc-text">k8s调度器，预选策略和优选函数（https://www.cnblogs.com/klvchen/p/10024846.html）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pod"><span class="toc-text">pod</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#client-go"><span class="toc-text">client-go</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k8s%E5%BC%80%E5%90%AFhttp%E7%AB%AF%E5%8F%A3"><span class="toc-text">k8s开启http端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AApod%E6%9C%80%E8%B5%B7%E7%A0%81%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">定义一个pod最起码的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AAdeployment%E6%9C%80%E8%B5%B7%E7%A0%81%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">定义一个deployment最起码的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AAservice%E6%9C%80%E8%B5%B7%E7%A0%81%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">定义一个service最起码的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#k8s%E8%B0%83%E5%BA%A6%E5%99%A8%EF%BC%8C%E9%A2%84%E9%80%89%E7%AD%96%E7%95%A5%E5%92%8C%E4%BC%98%E9%80%89%E5%87%BD%E6%95%B0%EF%BC%88https-www-cnblogs-com-klvchen-p-10024846-html%EF%BC%89"><span class="toc-text">k8s调度器，预选策略和优选函数（https://www.cnblogs.com/klvchen/p/10024846.html）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pod"><span class="toc-text">pod</span></a></li></ol>
     </div>
 </div>
 
@@ -314,14 +313,16 @@
       
       
       <li>
-        <a href="/2020/12/30/markdown%E7%AC%94%E8%AE%B0/"></a>
+        <a href="/2020/12/30/markdown%E7%AC%94%E8%AE%B0/">markdown笔记</a>
       </li>
       
       
       
       <li>
-        <a href="/2020/12/29/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"></a>
+        <a href="/2020/12/29/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">基础命令日常总结</a>
       </li>
+      
+      
       
       
       
@@ -412,7 +413,7 @@
         </a>
     </div>
     <span class="floating-header-divider">—</span>
-    <div class="floating-header-title"></div>
+    <div class="floating-header-title">连接kubernetes</div>
     <progress class="progress" value="0">
         <div class="progress-container">
             <span class="progress-bar"></span>
