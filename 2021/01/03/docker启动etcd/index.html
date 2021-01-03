@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<title>基础命令日常总结 | Hexo</title>
+	<title>docker启动etcd | Hexo</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -40,14 +40,14 @@
 
 	<meta property="og:site_name" content="Hexo">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="基础命令日常总结 | Hexo">
+	<meta property="og:title" content="docker启动etcd | Hexo">
 	<meta property="og:description" content="">
-	<meta property="og:url" content="http://example.com/2020/12/29/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">
+	<meta property="og:url" content="http://example.com/2021/01/03/docker%E5%90%AF%E5%8A%A8etcd/">
 
 	
-	<meta property="article:published_time" content="2020-12-29T14:12:66+08:00"> 
+	<meta property="article:published_time" content="2021-01-03T22:01:00+08:00"> 
 	<meta property="article:author" content="John Doe">
-	<meta property="article:published_first" content="Hexo, /2020/12/29/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">
+	<meta property="article:published_first" content="Hexo, /2021/01/03/docker%E5%90%AF%E5%8A%A8etcd/">
 	
 </head>
 <body class="post-template">
@@ -126,27 +126,21 @@
     <div class="inner">
         <header class="post-full-header">
             <section class="post-full-meta">
-                <time class="post-full-meta-date" datetime="2020-12-29T06:31:08.664Z" itemprop="datePublished">
-                    2020-12-29
+                <time class="post-full-meta-date" datetime="2021-01-03T14:48:22.000Z" itemprop="datePublished">
+                    2021-01-3
                 </time>
                 
                 <span class="date-divider">/</span>
                 
                 
             </section>
-            <h1 class="post-full-title">基础命令日常总结</h1>
+            <h1 class="post-full-title">docker启动etcd</h1>
         </header>
         <article class="post-full no-image">
             
             <section class="post-full-content">
                 <div id="lightgallery" class="markdown-body">
-                    <h2 id="netstat-apn-grep-8080-或者-lsof-i-8080"><a href="#netstat-apn-grep-8080-或者-lsof-i-8080" class="headerlink" title="netstat -apn | grep 8080 或者 lsof -i:8080"></a>netstat -apn | grep 8080 或者 lsof -i:8080</h2><p>  根据端口查PID</p>
-<h2 id="netstat-apn-grep-21299"><a href="#netstat-apn-grep-21299" class="headerlink" title="netstat -apn | grep 21299"></a>netstat -apn | grep 21299</h2><p>  根据PID查端口</p>
-<h2 id="kill-9-PID"><a href="#kill-9-PID" class="headerlink" title="kill -9  PID"></a>kill -9  PID</h2><p>  杀死PID对应的端口</p>
-<h2 id="nohup-main-gt-dev-null-2-gt-amp-1-amp"><a href="#nohup-main-gt-dev-null-2-gt-amp-1-amp" class="headerlink" title="nohup ./main > /dev/null 2>&amp;1 &amp;"></a>nohup ./main &gt; /dev/null 2&gt;&amp;1 &amp;</h2><p>  后端启动main服务, 并且返回PID号</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例如：</span><br><span class="line">参考链接： https://blog.csdn.net/m0_46657040/article/details/109611803</span><br><span class="line">[root@k8s-master-81 harmoryedge]<span class="comment"># nohup ./main &gt; /dev/null 2&gt;&amp;1 &amp;</span></span><br><span class="line">[1] 21299</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="cd-proc-21299-amp-amp-ll"><a href="#cd-proc-21299-amp-amp-ll" class="headerlink" title="cd /proc/21299 &amp;&amp; ll"></a>cd /proc/21299 &amp;&amp; ll</h2><p>  通过PID号查询服务路径等信息</p>
-<h2 id="npm-run-start"><a href="#npm-run-start" class="headerlink" title="npm run start"></a>npm run start</h2><p>  启动前端start程序(react或者vue)</p>
+                    <h2 id="只需要暴露2379端口"><a href="#只需要暴露2379端口" class="headerlink" title="只需要暴露2379端口"></a>只需要暴露2379端口</h2><p>docker run -id –name etcd_T<br>    -v ~/Docker-data/etcd/ca-certificates/:/etc/ssl/certs<br>    -p 2379:2379<br>    gotok8s/etcd:3.3.10</p>
 
                 </div>
             </section>
@@ -157,14 +151,10 @@
     <div style="height: 4vw;width: 100%"></div>
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="markdown笔记" href="/2020/12/30/markdown%E7%AC%94%E8%AE%B0/">
-            ← markdown笔记
-        </a>
-        
         <span class="prev-next-post">•</span>
         
-        <a class="next-post" title="YOU-GET笔记" href="/2020/12/25/you-get%E7%AC%94%E8%AE%B0/">
-            YOU-GET笔记 →
+        <a class="next-post" title="go-zero脚手架搭建微服务笔记" href="/2021/01/03/go-zero%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/">
+            go-zero脚手架搭建微服务笔记 →
         </a>
         
     </nav>
@@ -190,7 +180,7 @@
         </a>
     </div>
     <div class="toc-main">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#netstat-apn-grep-8080-%E6%88%96%E8%80%85-lsof-i-8080"><span class="toc-text">netstat -apn | grep 8080 或者 lsof -i:8080</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#netstat-apn-grep-21299"><span class="toc-text">netstat -apn | grep 21299</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kill-9-PID"><span class="toc-text">kill -9  PID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nohup-main-gt-dev-null-2-gt-amp-1-amp"><span class="toc-text">nohup ./main &gt; /dev/null 2&gt;&amp;1 &amp;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cd-proc-21299-amp-amp-ll"><span class="toc-text">cd /proc/21299 &amp;&amp; ll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm-run-start"><span class="toc-text">npm run start</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AA%E9%9C%80%E8%A6%81%E6%9A%B4%E9%9C%B22379%E7%AB%AF%E5%8F%A3"><span class="toc-text">只需要暴露2379端口</span></a></li></ol>
     </div>
 </div>
 
@@ -330,7 +320,7 @@
         </a>
     </div>
     <span class="floating-header-divider">—</span>
-    <div class="floating-header-title">基础命令日常总结</div>
+    <div class="floating-header-title">docker启动etcd</div>
     <progress class="progress" value="0">
         <div class="progress-container">
             <span class="progress-bar"></span>
