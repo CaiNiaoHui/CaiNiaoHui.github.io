@@ -140,7 +140,11 @@
             
             <section class="post-full-content">
                 <div id="lightgallery" class="markdown-body">
-                    <h2 id="只需要暴露2379端口"><a href="#只需要暴露2379端口" class="headerlink" title="只需要暴露2379端口"></a>只需要暴露2379端口</h2><p>docker run -id –name etcd_T<br>    -v ~/Docker-data/etcd/ca-certificates/:/etc/ssl/certs<br>    -p 2379:2379<br>    gotok8s/etcd:3.3.10</p>
+                    <h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><p>docker run <br>-p 2379:2379 <br>-p 2380:2380 <br>–name etcd-gcr-v3.4.0 <br>quay.io/coreos/etcd:v3.4.0 <br>/usr/local/bin/etcd <br>–name s1 <br>–data-dir /etcd-data <br>–listen-client-urls <a target="_blank" rel="noopener" href="http://0.0.0.0:2379/">http://0.0.0.0:2379</a> <br>–advertise-client-urls <a target="_blank" rel="noopener" href="http://0.0.0.0:2379/">http://0.0.0.0:2379</a> <br>–listen-peer-urls <a target="_blank" rel="noopener" href="http://0.0.0.0:2380/">http://0.0.0.0:2380</a> <br>–initial-advertise-peer-urls <a target="_blank" rel="noopener" href="http://0.0.0.0:2380/">http://0.0.0.0:2380</a> <br>–initial-cluster s1=<a target="_blank" rel="noopener" href="http://0.0.0.0:2380/">http://0.0.0.0:2380</a> <br>–initial-cluster-token tkn <br>–initial-cluster-state new <br>–log-level info <br>–logger zap <br>–log-outputs stderr</p>
+<ul>
+<li>我遇到的坑</li>
+</ul>
+<p>默认启动都是localhost，结果外部访问不能访问</p>
 
                 </div>
             </section>
@@ -150,6 +154,10 @@
     
     <div style="height: 4vw;width: 100%"></div>
     <nav id="gobottom" class="pagination">
+        
+        <a class="prev-post" title="dockerfile" href="/2021/01/04/dockerfile/">
+            ← dockerfile
+        </a>
         
         <span class="prev-next-post">•</span>
         
@@ -180,7 +188,7 @@
         </a>
     </div>
     <div class="toc-main">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AA%E9%9C%80%E8%A6%81%E6%9A%B4%E9%9C%B22379%E7%AB%AF%E5%8F%A3"><span class="toc-text">只需要暴露2379端口</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">启动服务</span></a></li></ol>
     </div>
 </div>
 
@@ -212,6 +220,12 @@
       
       
       <li>
+        <a href="/2021/01/04/dockerfile/">dockerfile</a>
+      </li>
+      
+      
+      
+      <li>
         <a href="/2021/01/03/docker%E5%90%AF%E5%8A%A8etcd/">docker启动etcd</a>
       </li>
       
@@ -222,10 +236,6 @@
       </li>
       
       
-      
-      <li>
-        <a href="/2020/12/30/markdown%E7%AC%94%E8%AE%B0/">markdown笔记</a>
-      </li>
       
       
       
