@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<title>YOU-GET笔记 | Hexo</title>
+	<title>kubeedge 核心架构组件详解 | Hexo</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -40,14 +40,14 @@
 
 	<meta property="og:site_name" content="Hexo">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="YOU-GET笔记 | Hexo">
+	<meta property="og:title" content="kubeedge 核心架构组件详解 | Hexo">
 	<meta property="og:description" content="">
-	<meta property="og:url" content="http://example.com/2020/12/25/you-get%E7%AC%94%E8%AE%B0/">
+	<meta property="og:url" content="http://example.com/2021/01/05/kubeedge%E7%AC%94%E8%AE%B0%E8%AF%A6%E8%A7%A3/">
 
 	
-	<meta property="article:published_time" content="2020-12-25T14:12:89+08:00"> 
+	<meta property="article:published_time" content="2021-01-05T11:01:44+08:00"> 
 	<meta property="article:author" content="John Doe">
-	<meta property="article:published_first" content="Hexo, /2020/12/25/you-get%E7%AC%94%E8%AE%B0/">
+	<meta property="article:published_first" content="Hexo, /2021/01/05/kubeedge%E7%AC%94%E8%AE%B0%E8%AF%A6%E8%A7%A3/">
 	
 </head>
 <body class="post-template">
@@ -126,34 +126,85 @@
     <div class="inner">
         <header class="post-full-header">
             <section class="post-full-meta">
-                <time class="post-full-meta-date" datetime="2020-12-25T06:29:11.892Z" itemprop="datePublished">
-                    2020-12-25
+                <time class="post-full-meta-date" datetime="2021-01-05T03:24:22.448Z" itemprop="datePublished">
+                    2021-01-5
                 </time>
                 
                 <span class="date-divider">/</span>
                 
                 
             </section>
-            <h1 class="post-full-title">YOU-GET笔记</h1>
+            <h1 class="post-full-title">kubeedge 核心架构组件详解</h1>
         </header>
         <article class="post-full no-image">
             
             <section class="post-full-content">
                 <div id="lightgallery" class="markdown-body">
-                    <ul>
-<li><p>参考连接 <a target="_blank" rel="noopener" href="https://github.com/soimort/you-get">https://github.com/soimort/you-get</a></p>
-</li>
-<li><p>安装： brew install you-get</p>
-</li>
-<li><p>使用</p>
+                    <h2 id="kubeedge分为两个可执行程序（cloudcore-edgecore）-8个组件"><a href="#kubeedge分为两个可执行程序（cloudcore-edgecore）-8个组件" class="headerlink" title="kubeedge分为两个可执行程序（cloudcore/edgecore）- 8个组件"></a>kubeedge分为两个可执行程序（cloudcore/edgecore）- 8个组件</h2><h3 id="cloudcore"><a href="#cloudcore" class="headerlink" title="cloudcore:"></a>cloudcore:</h3><ol>
+<li>CloudHub：云中的通信接口模块。</li>
+<li>EdgeController：管理Edge节点。</li>
+<li>devicecontroller 负责设备管理。</li>
+</ol>
+<h3 id="edgecore"><a href="#edgecore" class="headerlink" title="edgecore:"></a>edgecore:</h3><ol>
+<li>Edged：在边缘管理容器化的应用程序。</li>
+<li>EdgeHub：Edge上的通信接口模块。</li>
+<li>EventBus：使用MQTT处理内部边缘通信。</li>
+<li>DeviceTwin：它是用于处理设备元数据的设备的软件镜像。</li>
+<li>MetaManager：它管理边缘节点上的元数据。</li>
+</ol>
 <ul>
-<li>you-get ‘<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=jNQXAC9IVRw'">https://www.youtube.com/watch?v=jNQXAC9IVRw'</a></li>
-</ul>
+<li>Edged详解：<ol>
+<li>和kubelet的功能相似。从metamanager接收和处理pod</li>
+<li>保留config map和secrets的缓存</li>
+<li>其他：<ol>
+<li>CRI边缘化</li>
+<li>container/images GC</li>
+<li>volume管理</li>
+</ol>
 </li>
-<li><p>查看详细信息</p>
-<ul>
-<li>you-get -i ‘<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=jNQXAC9IVRw'">https://www.youtube.com/watch?v=jNQXAC9IVRw'</a></li>
+</ol>
+</li>
 </ul>
+<h3 id="各模块详解"><a href="#各模块详解" class="headerlink" title="各模块详解"></a>各模块详解</h3><ul>
+<li><p>eventbus</p>
+<ol>
+<li>主要用来发送接收mqtt的消息接口（如蓝牙设备等等）</li>
+<li>三种模式 internalMqttMode/externalMqttMode/bothMqttMode</li>
+</ol>
+</li>
+<li><p>metamanager</p>
+<ol>
+<li>MetaManager是edged和edgehub之间的消息处理器。它还负责将元数据存储到轻量级数据库（SQLite）或从中检索元数据。</li>
+<li>因为连接SQLite，所以能进行CRUD操作</li>
+</ol>
+</li>
+<li><p>Edgehub</p>
+<ol>
+<li>Edge Hub使用Web socket或QUIC协议和CloudHub组件进行交互。同步云端更新和报告边缘端主机状态</li>
+</ol>
+</li>
+<li><p>DeviceTwin</p>
+<ol>
+<li>负责存储设备状态，处理设备属性，处理设备孪生操作，在边缘设备和边缘节点之间创建成员资格，将设备状态同步到云以及在边缘和云之间同步设备孪生信息。它还为应用程序提供查询接口。</li>
+<li>由4个子模块组成：membership，communication，device和device twin</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="以下为云上组件"><a href="#以下为云上组件" class="headerlink" title="  以下为云上组件"></a>  以下为云上组件</h2><hr>
+<ul>
+<li>Edge Controller<ol>
+<li>EdgeController是Kubernetes Api服务器和Edgecore之间的桥梁</li>
+</ol>
+</li>
+<li>CloudHub<ol>
+<li>CloudHub是cloudcore的一个模块，是Controller和Edge端之间的中介。它同时支持基于Web套接字的连接以及QUIC协议访问。</li>
+<li>功能：启用边缘与控制器之间的通信</li>
+</ol>
+</li>
+<li>Device Controller<ol>
+<li>k8s CRD来描述设备metadata/status ，devicecontroller在云和边缘之间同步，有两个goroutines: <code>upstream controller</code>/downstream controller</li>
+</ol>
 </li>
 </ul>
 
@@ -166,14 +217,14 @@
     <div style="height: 4vw;width: 100%"></div>
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="基础命令日常总结" href="/2020/12/29/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">
-            ← 基础命令日常总结
+        <a class="prev-post" title="github图片如何显示出来" href="/2021/01/05/github%E5%9B%BE%E7%89%87%E4%B8%8D%E8%83%BD%E6%98%BE%E7%A4%BA/">
+            ← github图片如何显示出来
         </a>
         
         <span class="prev-next-post">•</span>
         
-        <a class="next-post" title="go测试章节" href="/2020/12/24/gotest%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E7%AC%94%E8%AE%B0/">
-            go测试章节 →
+        <a class="next-post" title="dockerfile" href="/2021/01/04/dockerfile/">
+            dockerfile →
         </a>
         
     </nav>
@@ -199,7 +250,7 @@
         </a>
     </div>
     <div class="toc-main">
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#kubeedge%E5%88%86%E4%B8%BA%E4%B8%A4%E4%B8%AA%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F%EF%BC%88cloudcore-edgecore%EF%BC%89-8%E4%B8%AA%E7%BB%84%E4%BB%B6"><span class="toc-text">kubeedge分为两个可执行程序（cloudcore/edgecore）- 8个组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cloudcore"><span class="toc-text">cloudcore:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#edgecore"><span class="toc-text">edgecore:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E6%A8%A1%E5%9D%97%E8%AF%A6%E8%A7%A3"><span class="toc-text">各模块详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E4%B8%BA%E4%BA%91%E4%B8%8A%E7%BB%84%E4%BB%B6"><span class="toc-text">  以下为云上组件</span></a></li></ol>
     </div>
 </div>
 
@@ -347,7 +398,7 @@
         </a>
     </div>
     <span class="floating-header-divider">—</span>
-    <div class="floating-header-title">YOU-GET笔记</div>
+    <div class="floating-header-title">kubeedge 核心架构组件详解</div>
     <progress class="progress" value="0">
         <div class="progress-container">
             <span class="progress-bar"></span>
