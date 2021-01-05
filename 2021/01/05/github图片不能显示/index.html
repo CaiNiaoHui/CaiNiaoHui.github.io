@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<title>markdown笔记 | Hexo</title>
+	<title>github图片如何显示出来 | Hexo</title>
 
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -40,14 +40,14 @@
 
 	<meta property="og:site_name" content="Hexo">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="markdown笔记 | Hexo">
+	<meta property="og:title" content="github图片如何显示出来 | Hexo">
 	<meta property="og:description" content="">
-	<meta property="og:url" content="http://example.com/2020/12/30/markdown%E7%AC%94%E8%AE%B0/">
+	<meta property="og:url" content="http://example.com/2021/01/05/github%E5%9B%BE%E7%89%87%E4%B8%8D%E8%83%BD%E6%98%BE%E7%A4%BA/">
 
 	
-	<meta property="article:published_time" content="2020-12-30T11:12:84+08:00"> 
+	<meta property="article:published_time" content="2021-01-05T16:01:23+08:00"> 
 	<meta property="article:author" content="John Doe">
-	<meta property="article:published_first" content="Hexo, /2020/12/30/markdown%E7%AC%94%E8%AE%B0/">
+	<meta property="article:published_first" content="Hexo, /2021/01/05/github%E5%9B%BE%E7%89%87%E4%B8%8D%E8%83%BD%E6%98%BE%E7%A4%BA/">
 	
 </head>
 <body class="post-template">
@@ -126,21 +126,37 @@
     <div class="inner">
         <header class="post-full-header">
             <section class="post-full-meta">
-                <time class="post-full-meta-date" datetime="2020-12-30T03:42:00.849Z" itemprop="datePublished">
-                    2020-12-30
+                <time class="post-full-meta-date" datetime="2021-01-05T08:36:47.237Z" itemprop="datePublished">
+                    2021-01-5
                 </time>
                 
                 <span class="date-divider">/</span>
                 
                 
             </section>
-            <h1 class="post-full-title">markdown笔记</h1>
+            <h1 class="post-full-title">github图片如何显示出来</h1>
         </header>
         <article class="post-full no-image">
             
             <section class="post-full-content">
                 <div id="lightgallery" class="markdown-body">
-                    <h2 id="插图三种方式"><a href="#插图三种方式" class="headerlink" title="插图三种方式"></a>插图三种方式</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">基础格式：</span><br><span class="line">![Alt text](图片链接 "optional title")</span><br><span class="line"></span><br><span class="line">方法一：插入本地图片</span><br><span class="line">![avatar](/home/picture/1.png)</span><br><span class="line"></span><br><span class="line">方法二：插入网络图片</span><br><span class="line">![avatar](http://baidu.com/pic/doge.png)</span><br><span class="line"></span><br><span class="line">方法三：把图片存入markdown文件</span><br><span class="line">![avatar][base64str]</span><br><span class="line">[base64str]:data:image/png;base64,iVBORw0......</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+                    <ul>
+<li><p>对于我这个一天不登github就心慌的人来说，github图片不能显示，是一个大问题。</p>
+</li>
+<li><p>主要原因dns污染。</p>
+</li>
+<li><p>解决方法，配置本地hosts文件解决，中国区dns污染问题</p>
+</li>
+<li><p>mac电脑</p>
+<ul>
+<li>终端输入sudo vi /etc/hosts。把下面内容添加进去</li>
+</ul>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GitHub Start</span></span><br><span class="line">192.30.253.112 Build software better, together</span><br><span class="line">192.30.253.119 gist.github.com</span><br><span class="line">151.101.184.133 assets-cdn.github.com</span><br><span class="line">151.101.184.133 raw.githubusercontent.com</span><br><span class="line">151.101.184.133 gist.githubusercontent.com</span><br><span class="line">151.101.184.133 cloud.githubusercontent.com</span><br><span class="line">151.101.184.133 camo.githubusercontent.com</span><br><span class="line">151.101.184.133 avatars0.githubusercontent.com</span><br><span class="line">151.101.184.133 avatars1.githubusercontent.com</span><br><span class="line">151.101.184.133 avatars2.githubusercontent.com</span><br><span class="line">151.101.184.133 avatars3.githubusercontent.com</span><br><span class="line">151.101.184.133 avatars4.githubusercontent.com</span><br><span class="line">151.101.184.133 avatars5.githubusercontent.com</span><br><span class="line">151.101.184.133 avatars6.githubusercontent.com</span><br><span class="line">151.101.184.133 avatars7.githubusercontent.com</span><br><span class="line">151.101.184.133 avatars8.githubusercontent.com</span><br><span class="line"><span class="comment"># GitHub End</span></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>保存退出，登陆github刷新就可以显示图片了</li>
+</ul>
+</li>
+</ul>
 
                 </div>
             </section>
@@ -151,14 +167,10 @@
     <div style="height: 4vw;width: 100%"></div>
     <nav id="gobottom" class="pagination">
         
-        <a class="prev-post" title="go-zero脚手架搭建微服务笔记" href="/2021/01/03/go-zero%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/">
-            ← go-zero脚手架搭建微服务笔记
-        </a>
-        
         <span class="prev-next-post">•</span>
         
-        <a class="next-post" title="基础命令日常总结" href="/2020/12/29/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">
-            基础命令日常总结 →
+        <a class="next-post" title="dockerfile" href="/2021/01/04/dockerfile/">
+            dockerfile →
         </a>
         
     </nav>
@@ -184,7 +196,7 @@
         </a>
     </div>
     <div class="toc-main">
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%9B%BE%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">插图三种方式</span></a></li></ol>
+        
     </div>
 </div>
 
@@ -328,7 +340,7 @@
         </a>
     </div>
     <span class="floating-header-divider">—</span>
-    <div class="floating-header-title">markdown笔记</div>
+    <div class="floating-header-title">github图片如何显示出来</div>
     <progress class="progress" value="0">
         <div class="progress-container">
             <span class="progress-bar"></span>
